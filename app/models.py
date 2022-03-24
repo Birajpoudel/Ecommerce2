@@ -25,10 +25,33 @@ class Banner(models.Model):
     Image = models.ImageField(upload_to='media/banner_imgs')
     Discount_Deal = models.CharField(max_length=100)
     Quote= models.CharField(max_length=400)
+    Link = models.CharField(max_length=500,null=True)
     Discount = models.IntegerField()
 
     def __str__(self):
         return self.Quote
+
+class Main_Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+class Category(models.Model):
+    main_category = models.ForeignKey(Main_Category,on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name + "--" + self.main_category.name
+
+class Subcategory(models.Model):
+    category= models.ForeignKey(Category,on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.category.main_category.name + "--" + self.category.name + "--" +self.name
+
+
 
 
 
