@@ -8,8 +8,8 @@ def BASE(request):
 
 def HOME(request):
     sliders = slider.objects.all().order_by('-id')[0:3]
-    banners = Banner.objects.all().order_by('id')[0:3]
-    main_category = Main_Category.objects.all.order_by('-id')
+    banners = Banner.objects.all().order_by('-id')[0:3]
+    main_category = Main_Category.objects.all().order_by('-id')
     context = {
         'sliders':sliders,
         'banners':banners,
