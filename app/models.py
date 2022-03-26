@@ -61,11 +61,11 @@ class Section(models.Model):
 class Product(models.Model):
     total_quantity = models.IntegerField()
     Availability = models.IntegerField()
-    featured_image = models.CharField(max_length=100)
+    featured_image = models.ImageField(upload_to='media/product_imgs')
     Product_name = models.CharField(max_length=100)
     Price = models.IntegerField()
     Discount = models.IntegerField()
-    Product_information = RichTextField()
+    Product_information = RichTextField(blank=True)
     model_Name = models.CharField(max_length=100)
     Categories = models.ForeignKey(Category,on_delete=models.CASCADE)
     Tags = models.CharField(max_length=100)
