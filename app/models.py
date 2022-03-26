@@ -51,7 +51,37 @@ class Subcategory(models.Model):
     def __str__(self):
         return self.category.main_category.name + "--" + self.category.name + "--" +self.name
 
+class Section(models.Model):
+    name = models.CharField(max_length = 100)
 
+    def __str__(self):
+        return self.name
+
+class Product(models.Model):
+    total_quantity = models.IntegerField()
+    Availability = models.IntegerField()
+    featured_image = models.CharField(max_length=100)
+    Product_name = models.CharField(max_length=100)
+    Price = models.IntegerField()
+    Discount = models.IntegerField()
+    Product_Information = models.TextField()
+    model_Name = models.CharField(max_length=100)
+    Categories = models.ForeignKey(Category,on_delete=models.CASCADE)
+    Tags = models.CharField(max_length=100)
+    Description = models.TextField()
+    section = models.ForeignKey(Section,on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return self.Product_name
+
+class Product_Image(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    Image_url = models.CharField(max_length = 200)
+
+class Additional_Information(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    specification = models.CharField(max_length=100)
+    detail = models.CharField(max_length=100)
 
 
 
