@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 STATUS=(('active','active'),('','default'))
 LABELS=(('special','special'),('','default'))
 
@@ -64,11 +65,11 @@ class Product(models.Model):
     Product_name = models.CharField(max_length=100)
     Price = models.IntegerField()
     Discount = models.IntegerField()
-    Product_Information = models.TextField()
+    Product_information = RichTextField()
     model_Name = models.CharField(max_length=100)
     Categories = models.ForeignKey(Category,on_delete=models.CASCADE)
     Tags = models.CharField(max_length=100)
-    Description = models.TextField()
+    Description = RichTextField()
     section = models.ForeignKey(Section,on_delete=models.DO_NOTHING)
 
     def __str__(self):
