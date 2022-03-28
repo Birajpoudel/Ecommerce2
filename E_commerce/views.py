@@ -20,3 +20,6 @@ def HOME(request):
 
     }
     return render(request, 'index.html',context)
+
+def Error404(request):
+    return render(request,'404.html')

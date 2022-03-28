@@ -20,6 +20,9 @@ from django.conf.urls.static import static
 from .import  views
 
 urlpatterns = [
+
+    #error page
+    path('404', views.Error404,name='404'),
     path('admin/', admin.site.urls),
     path('base/', views.BASE, name= 'base'),
     path('', views.HOME, name= 'home'),
